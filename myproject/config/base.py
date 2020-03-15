@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import sys
+from django.utils.translation import ugettext_lazy as _
 from utils.misc import get_media_svn_revision, get_git_changeset
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -128,13 +129,13 @@ LOCALE_PATHS = [
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 # if using SVN:
-#STATIC_URL = f'/static/{get_media_svn_revision(BASE_DIR)}/'
+# STATIC_URL = f'/static/{get_media_svn_revision(BASE_DIR)}/'
 
 # if using GIT:
 STATIC_URL = f'/static/{get_git_changeset(BASE_DIR)}/'
 
 # otherwise:
-#STATIC_URL = '/static/'
+# STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
@@ -143,3 +144,13 @@ STATICFILES_DIRS = [
 ]
 
 FILE_UPLOAD_TEMP_DIR = os.path.join(BASE_DIR, 'tmp')
+
+# App settings
+
+MAGAZINE_STATUS_CHOICES = (
+    ("imported", _("Imported")),
+    ("draft", _("Draft")),
+    ("published", _("Published")),
+    ("not_listed", _("Not Listed")),
+    ("expired", _("Expired")),
+)
