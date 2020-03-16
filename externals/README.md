@@ -1,0 +1,1 @@
+The `externals/` directory is for include external dependencies directly within your project.

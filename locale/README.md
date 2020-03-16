@@ -1,0 +1,1 @@
+The `locale/` directory is for your project translations.

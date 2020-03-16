@@ -1,0 +1,1 @@
+The `site_static/` directory is for the project-specific static files.

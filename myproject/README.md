@@ -1,0 +1,1 @@
+The `myproject/` directory is the project's Python package.

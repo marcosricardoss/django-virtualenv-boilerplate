@@ -1,0 +1,1 @@
+The `magazine/` is a app directory.
