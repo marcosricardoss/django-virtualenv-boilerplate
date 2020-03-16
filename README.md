@@ -2,39 +2,83 @@
 
 This Django application is a pre-configured project with a well-done file structure. Use this boilerplate to quickly start you new Django projects.
 
-#### The Virtual Environment 
+#### Virtual Environment File Structure
 
-This boilerplate is meant to be used in Virtual Environment. See below the nice suggestion of a file structure for it:
+See below a file structure suggestion to use this boilerplate in a virtual environment.
 
-  .
-  ├── commands
-  ├── dumps
-  ├── project
-  └── venv
+    .
+    ├── commands
+    ├── dumps
+    ├── project
+    └── venv
 
-`commands`: local shell scripts that are related to the project.
-`dumps`: directory for database dumps.
-`project`: your Django project.
-`venv`: virtual environment directory.
+- `commands`: local shell scripts that are related to the project.
+- `dumps`: directory for database dumps.
+- `project`: your Django project.
+- `venv`: virtual environment directory.
 
 #### Project Structure
 
-  .
-  ├── **externals**
-  ├── **locale**
-  ├── magazine
-  ├── **media**
-  ├── **myproject**
-  ├── **requirements**
-  ├── **site_static**
-  ├── **static**
-  ├── **templates**
-  ├── **tmp**
-  ├── **utils**
-  ├── .gitignore
-  ├── LICENSE.md
-  ├── manage.py
-  └── README.md
+    .
+    ├── externals
+    │   ├── apps
+    │   ├── libs
+    │   └── README.md
+    ├── LICENSE.md
+    ├── locale
+    │   └── README.md
+    ├── magazine
+    │   ├── admin.py
+    │   ├── app_settings.py
+    │   ├── apps.py
+    │   ├── __init__.py
+    │   ├── migrations
+    │   ├── models.py
+    │   ├── README.md
+    │   ├── signals.py
+    │   ├── tests.py
+    │   └── views.py
+    ├── manage.py
+    ├── media
+    │   └── README.md
+    ├── myproject
+    │   ├── asgi.py
+    │   ├── config
+    │   ├── db.sqlite3
+    │   ├── __init__.py
+    │   ├── README.md
+    │   ├── settings.py
+    │   ├── settings.py.example
+    │   ├── urls.py
+    │   └── wsgi.py
+    ├── README.md
+    ├── requirements
+    │   ├── base.txt
+    │   ├── dev.txt
+    │   ├── prod.txt
+    │   ├── README.md
+    │   ├── staging.txt
+    │   └── test.txt
+    ├── site_static
+    │   ├── README.md
+    │   └── site
+    ├── static
+    │   └── README.md
+    ├── templates
+    │   └── README.md
+    ├── tmp
+    │   ├── __init__.py
+    │   └── README.md
+    └── utils
+        ├── admin.py
+        ├── apps.py
+        ├── __init__.py
+        ├── migrations
+        ├── misc.py
+        ├── models.py
+        ├── README.md
+        ├── tests.py
+        └── views.py
 
 - `externals`: directory for include external dependencies directly within your project.
 - `locale`: directory for your project translations.
