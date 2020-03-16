@@ -89,4 +89,4 @@ See below a file structure suggestion to use this boilerplate in a virtual envir
 - `static`: collected static files.
 - `templates`: directory for project templates.
 - `tmp`: directory for the upload procedure.
-- `utils`: for different functionalities that are shared throughout the project.
+- `utils`: app with different functionalities that are shared throughout the project.

@@ -1,1 +1,1 @@
-The `utils/` directory is for the different functionalities that are shared throughout the project.
+The `utils/` app is for the different functionalities that are shared throughout the project.
