@@ -1,7 +1,7 @@
 # Project files and directories
-/myproject/static/
-/myproject/tmp/
-/myproject/media/
+/static/
+/tmp/
+/media/
 # Local settings
 /myproject/settings.py
 # Byte-compiled / optimized / DLL files
