@@ -1,6 +1,20 @@
 from urllib.parse import urlparse, urlunparse
+
 from django.conf import settings
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
+
+
+class CreationModificationDateMixin(models.Model):
+    """
+    Abstract base class with a creation
+    and modification date and time
+    """
+    class Meta:
+        abstract = True
+
+    created = models.DateTimeField(_("creation date and time"), auto_now_add=True)
+    updated = models.DateTimeField(_("modification date and time"), auto_now=True)
 
 
 class UrlMixin(models.Model):
