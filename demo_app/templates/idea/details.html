@@ -1,0 +1,23 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  {{ idea.get_meta_tags }}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }}</title>
+</head>
+<body>
+  <h1>{{ title }}</h1>
+  <p>Idea {{ idea.title }}</p>
+  <p>{{ idea.content }}</p>
+  <div>{{ idea.description|urlize|linebreaks }}</div>
+</body>
+</html> -->
+<section {{ idea.itemtype_attribute }}>
+  <header {{ idea.title_itemprop_attribute }}>
+  {{ idea.title }}
+  </header>
+  <div {{ idea.content_itemprop_attribute }}>
+  {{ idea.content }}
+  </div>
+  </section>

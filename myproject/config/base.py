@@ -40,6 +40,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'magazine',
     'utils',
+    'demo_app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -113,6 +114,15 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
+
+LANGUAGES = (
+    ("en-us", "US English"),
+    ("en-gb", "British English"),
+    ("pt-br", "Português"),
+    ("de", "Deutsch"),
+    ("fr", "Français"),
+    ("lt", "Lietuvių kalba"),
+)
 
 TIME_ZONE = 'UTC'
 
