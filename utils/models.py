@@ -1,3 +1,5 @@
+from enum import Enum
+from functools import reduce
 from urllib.parse import urlparse, urlunparse
 
 from django.conf import settings
@@ -208,3 +210,91 @@ class UrlMixin(models.Model):
 
     def get_absolute_url(self):
         return self.get_url_path()
+
+class ChoiceEnum(Enum):
+    @classmethod
+    def choices(cls):
+        return tuple((x.name, x.value,) for x in cls)
+
+
+class ItemPropChoiceEnum(ChoiceEnum):
+    @classmethod
+    def choices(cls, scope=None):
+        sources = [cls] + cls.parents()
+        choices = reduce((
+            lambda x, y: tuple(set(x) | set(y))), sources)
+        if scope:
+            choices = tuple(set(choices) & set(scope.choices()))
+        return choices
+
+    @classmethod
+    def parents(cls):
+        return []
+
+
+class ItemType(ChoiceEnum):
+    THING = "Thing"
+    CREATIVE_WORK = "CreativeWork"
+    BOOK = "Book"
+
+
+class BooleanFieldItemProp(ItemPropChoiceEnum):
+    ABRIDGED = "Abridged"
+
+
+class CharFieldItemProp(ItemPropChoiceEnum):
+    ACCESS_MODE = "accessMode"
+    ALTERNATE_NAME = "alternateName"
+    BOOK_EDITION = "bookEdition"
+    DESCRIPTION = "description"
+
+
+class TextFieldItemProp(ItemPropChoiceEnum):
+    @classmethod
+    def parents(cls):
+        return [CharFieldItemProp]
+
+
+class ForeignKeyItemProp(ItemPropChoiceEnum):
+    ABOUT = "about"
+    SUBJECT_OF = "subjectOf"
+    WORK_EXAMPLE = "workExample"
+    WORK_TRANSLATION = "workTranslation"
+
+
+class ManyToManyFieldItemProp(ItemPropChoiceEnum):
+    @classmethod
+    def parents(cls):
+        return [ForeignKeyItemProp]
+
+
+class OneToOneFieldItemProp(ItemPropChoiceEnum):
+    @classmethod
+    def parents(cls):
+        return [ForeignKeyItemProp]
+
+
+class UrlFieldItemProp(ItemPropChoiceEnum):
+    ADDITIONAL_TYPE = "additionalType"
+    SAME_AS = "sameAs"
+    URL = "url"
+
+
+class SchemaMicrodata(models.Model):
+    class Meta:
+        abstract = True
+
+    @classmethod
+    def itemprop_fields(cls):
+        return []
+
+    itemtype = models.CharField(_("Microdata item type"),
+                                max_length=100,
+                                blank=True,
+                                choices=ItemType.choices())
+
+    def itemtype_attribute(self):
+        attr = loader.render_to_string(
+            "utils/itemtype.attr.html",
+            {"itemtype": self.get_itemtype_display()})
+        return mark_safe(attr)        
